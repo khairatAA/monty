@@ -38,4 +38,10 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* FUNCTION PROTOTYPES */
+
+void count_arguments(int argc);
+int main(int argc, char **argv);
+void handle_file_opening(const char *name_of_file, FILE **file);
+
 #endif /* MONTY_H */
