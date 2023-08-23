@@ -1,5 +1,7 @@
 #include "monty.h"
 
+ File_content *file_ptr = NULL;
+
 /**
  *
  */
@@ -33,8 +35,6 @@ void handle_file_opening(const char *name_of_file, FILE **file)
 
 File_content *allocated_file_content(void)
 {
-	File_content *file_ptr;
-
 	file_ptr = (File_content *)malloc(sizeof(File_content));
 	if (file_ptr == NULL)
 	{
@@ -43,19 +43,10 @@ File_content *allocated_file_content(void)
 	}
 	file_ptr->file = NULL;
 	file_ptr->line_number = 0;
+	file_ptr->num_tokens = 0;
 	/* Initalize other properties of the struct here*/
 
 	return (file_ptr);
-}
-
-/**
- *
- */
-
-void free_file_ptr(File_content *file_ptr)
-{
-	fclose(file_ptr->file);
-	free(file_ptr);
 }
 
 /**
@@ -73,16 +64,19 @@ int main(int argc, char **argv)
 	if (file_ptr->file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		free_file_ptr(file_ptr);
+		free_file_ptr();
 		exit(EXIT_FAILURE);
 	}
 
 	while (getline(&line, &line_size, file_ptr->file) != -1)
 	{
-		printf("%s", line);
+		file_ptr->line_number = file_ptr->line_number + 1;
+		parse_line(line);
+		get_opcode_func();
+		free_tokens();
 	}
 
-	free(line);
-	free_file_ptr(file_ptr);
+	fclose_file();
+	free_file_ptr();
 	return (0);
 }

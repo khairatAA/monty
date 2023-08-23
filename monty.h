@@ -47,7 +47,12 @@ typedef struct
 {
 	FILE *file;
 	unsigned int line_number;
+	int num_tokens;
+	char **tokens;
+	instruction_t *opcode_instruction;
 } File_content;
+
+extern File_content *file_ptr;
 
 /* FUNCTION PROTOTYPES */
 
@@ -55,5 +60,13 @@ void count_arguments(int argc);
 int main(int argc, char **argv);
 void handle_file_opening(const char *name_of_file, FILE **file);
 File_content *allocated_file_content(void);
-void free_file_ptr(File_content *file_ptr);
+void parse_line(char *line);
+void get_opcode_func(void);
+void invalid_instruction(void);
+void fclose_file(void);
+void free_tokens(void);
+void free_file_ptr(void);
+void execute_opcode(void);
+/* void push(stack_t **stack, unsigned int line_number); */
+
 #endif /* MONTY_H */
