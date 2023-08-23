@@ -3,6 +3,7 @@
 
 /* HEADER FILES*/
 
+#define  _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,10 +39,21 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ *
+ */
+
+typedef struct
+{
+	FILE *file;
+	unsigned int line_number;
+} File_content;
+
 /* FUNCTION PROTOTYPES */
 
 void count_arguments(int argc);
 int main(int argc, char **argv);
 void handle_file_opening(const char *name_of_file, FILE **file);
-
+File_content *allocated_file_content(void);
+void free_file_ptr(File_content *file_ptr);
 #endif /* MONTY_H */
