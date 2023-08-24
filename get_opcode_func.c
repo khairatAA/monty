@@ -17,6 +17,7 @@ void get_opcode_func(void)
 		{"add", add},
 		{"sub", sub},
 		{"div", _div},
+		{"mul", mul},
 		{NULL, NULL}
 	};
 
