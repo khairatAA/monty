@@ -20,6 +20,7 @@ void get_opcode_func(void)
 		{"mul", mul},
 		{"swap", swap},
 		{"nop", nop},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 
