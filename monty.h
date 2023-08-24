@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 /* DATA STRUCTURES */
 /**
@@ -46,10 +47,12 @@ typedef struct instruction_s
 typedef struct
 {
 	FILE *file;
+	char *line;
 	unsigned int line_number;
 	int num_tokens;
 	char **tokens;
 	instruction_t *opcode_instruction;
+	stack_t *head;
 } File_content;
 
 extern File_content *file_ptr;
@@ -60,13 +63,17 @@ void count_arguments(int argc);
 int main(int argc, char **argv);
 void handle_file_opening(const char *name_of_file, FILE **file);
 File_content *allocated_file_content(void);
-void parse_line(char *line);
+void parse_line();
 void get_opcode_func(void);
 void invalid_instruction(void);
 void fclose_file(void);
 void free_tokens(void);
 void free_file_ptr(void);
-void execute_opcode(void);
-/* void push(stack_t **stack, unsigned int line_number); */
+void execute_opcode();
+void push(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t *head);
+int is_digit_(char *str);
+void free_head(void);
+void pall(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

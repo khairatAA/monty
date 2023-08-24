@@ -42,8 +42,20 @@ File_content *allocated_file_content(void)
 		exit(EXIT_FAILURE);
 	}
 	file_ptr->file = NULL;
+	file_ptr->line = NULL;
 	file_ptr->line_number = 0;
 	file_ptr->num_tokens = 0;
+	file_ptr->tokens = NULL;
+	file_ptr->head = NULL;
+	file_ptr->opcode_instruction = (instruction_t *)
+		malloc(sizeof(instruction_t));
+	if (file_ptr->opcode_instruction == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	file_ptr->opcode_instruction->opcode = NULL;
+	file_ptr->opcode_instruction->f = NULL;
 	/* Initalize other properties of the struct here*/
 
 	return (file_ptr);
@@ -55,11 +67,10 @@ File_content *allocated_file_content(void)
 
 int main(int argc, char **argv)
 {
-	File_content *file_ptr = allocated_file_content();
-	char *line = NULL;
 	size_t line_size = 0;
 
 	count_arguments(argc);
+	file_ptr = allocated_file_content();
 	handle_file_opening(argv[1], &(file_ptr->file));
 	if (file_ptr->file == NULL)
 	{
@@ -68,11 +79,12 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	while (getline(&line, &line_size, file_ptr->file) != -1)
+	while (getline(&file_ptr->line, &line_size, file_ptr->file) != -1)
 	{
 		file_ptr->line_number = file_ptr->line_number + 1;
-		parse_line(line);
+		parse_line();
 		get_opcode_func();
+		execute_opcode();
 		free_tokens();
 	}
 

@@ -4,7 +4,7 @@
  *
  */
 
-void execute_opcode(void)
+void execute_opcode()
 {
 	stack_t *stack = NULL;
 

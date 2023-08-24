@@ -9,8 +9,8 @@ void get_opcode_func(void)
 	size_t i;
 
 	static instruction_t opcodes[] = {
-		/* {"push", push}, */
-		/* {"pall", pall}, */
+		{"push", push},
+		{"pall", pall},
 		/* This will increase as we keep implementing */
 		{NULL, NULL}
 	};
@@ -81,6 +81,18 @@ void free_tokens(void)
 
 void free_file_ptr(void)
 {
-	free(file_ptr->opcode_instruction);
+	if (file_ptr == NULL)
+		return;
+	if (file_ptr->opcode_instruction)
+	{
+		free(file_ptr->opcode_instruction);
+		file_ptr->opcode_instruction = NULL;
+	}
+	free_head();
+	if (file_ptr->line)
+	{
+		free(file_ptr->line);
+		file_ptr->line = NULL;
+	}
 	free(file_ptr);
 }
