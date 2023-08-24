@@ -1,7 +1,9 @@
 #include "monty.h"
 
 /**
- * sub - subtracts top element of stack from the second top element of the stack
+ * sub - subtracts top element of stack from
+ * second top element of the stack
+ *
  * @stack: stack
  * @line_number: line number of file to execute
  *
