@@ -1,8 +1,8 @@
 #include "monty.h"
 
 /**
- * pint - prints all the values on the stack, starting
- * from the top of the stack
+ * pint - prints the value at the top of the stack
+ *
  * @stack: a pointer to the stack struct
  * @line_number: the line number of each line in the file
  */
