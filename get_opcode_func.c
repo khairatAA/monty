@@ -15,6 +15,7 @@ void get_opcode_func(void)
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
