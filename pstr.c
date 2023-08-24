@@ -18,18 +18,21 @@ void pstr(stack_t **stack, unsigned int line_number)
 	{
 		printf("\n");
 	}
-
-	printf("%c", temp->n);
-	while (temp->next != NULL)
+	else
 	{
-		temp = temp->next;
-		if (!(temp->n >= 'A' && temp->n <= 'Z')
-				&& !(temp->n >= 'a' && temp->n <= 'z'))
-			break;
-		if (temp->n == 0)
-			break;
-		printf("%c", temp->n);
-	}
 
-	printf("\n");
+		printf("%c", temp->n);
+		while (temp->next != NULL)
+		{
+			temp = temp->next;
+			if (!(temp->n >= 'A' && temp->n <= 'Z')
+					&& !(temp->n >= 'a' && temp->n <= 'z'))
+				break;
+			if (temp->n == 0)
+				break;
+			printf("%c", temp->n);
+		}
+
+		printf("\n");
+	}
 }
