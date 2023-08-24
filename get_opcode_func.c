@@ -22,6 +22,7 @@ void get_opcode_func(void)
 		{"nop", nop},
 		{"mod", mod},
 		{"pchar", pchar},
+		{"pstr", pstr},
 		{NULL, NULL}
 	};
 
