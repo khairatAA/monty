@@ -13,7 +13,7 @@ void get_opcode_func(void)
 	static instruction_t opcodes[] = {
 		{"push", push}, {"pall", pall},
 		{"pint", pint},
-		{"pop", pop};
+		{"pop", pop},
 		{"add", add},
 		{"sub", sub},
 		{"div", _div},
