@@ -11,9 +11,8 @@ void get_opcode_func(void)
 	size_t i;
 
 	static instruction_t opcodes[] = {
-		{"push", push},
-		{"pall", pall},
-		/* This will increase as we keep implementing */
+		{"push", push}, {"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
