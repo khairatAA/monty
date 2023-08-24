@@ -83,5 +83,6 @@ int is_digit_(char *str);
 void free_head(void);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
