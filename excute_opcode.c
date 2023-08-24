@@ -1,10 +1,10 @@
 #include "monty.h"
 
 /**
- *
+ * execute_opcode - handles the excution, if a valid command is passed
  */
 
-void execute_opcode()
+void execute_opcode(void)
 {
 	stack_t *stack = NULL;
 

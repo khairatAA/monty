@@ -1,14 +1,13 @@
 #include "monty.h"
 
 /**
- *
+ * parse_line - it handles the tokenization of the string enter
  */
 
-void parse_line()
+void parse_line(void)
 {
 	int i = 0;
-	char *line_copy = NULL;
-	char *token = NULL;
+	char *line_copy = NULL, *token = NULL;
 
 	line_copy = malloc(sizeof(char) * (strlen(file_ptr->line) + 1));
 	if (line_copy == NULL)
@@ -19,7 +18,6 @@ void parse_line()
 	strcpy(line_copy, file_ptr->line);
 	file_ptr->num_tokens = 0;
 	token = strtok(line_copy, " \n");
-
 	while (token)
 	{
 		file_ptr->num_tokens += 1;
@@ -36,7 +34,7 @@ void parse_line()
 	token = strtok(line_copy, " \n");
 	while (token)
 	{
-		file_ptr->tokens[i] = malloc(sizeof(char) * 
+		file_ptr->tokens[i] = malloc(sizeof(char) *
 				(strlen(token) + 1));
 		if (file_ptr->tokens[i] == NULL)
 		{

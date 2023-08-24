@@ -1,7 +1,10 @@
 #include "monty.h"
 
 /**
- *
+ * push - prints all the values on the stack, starting
+ * from the top of the stack
+ * @stack: a pointer to the stack struct
+ * @line_number: the line number of each line in the file
  */
 
 void push(stack_t **stack, unsigned int line_number)
@@ -30,6 +33,12 @@ void push(stack_t **stack, unsigned int line_number)
 	file_ptr->head = *stack;
 }
 
+/**
+ * is_digit_ - checks if a string is a digit
+ * @str: the string o check
+ * Return: 0 on success
+ */
+
 int is_digit_(char *str)
 {
 	int i = 0;
@@ -50,6 +59,11 @@ int is_digit_(char *str)
 	return (1);
 }
 
+/**
+ * free_stack - handles the free of all the stacks created
+ * @head: a pointer to the head of the node
+ */
+
 void free_stack(stack_t *head)
 {
 	if (head == NULL)
@@ -60,6 +74,10 @@ void free_stack(stack_t *head)
 	}
 	free(head);
 }
+
+/**
+ * free_head - frees the head pointer
+ */
 
 void free_head(void)
 {

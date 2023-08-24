@@ -21,9 +21,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -36,15 +36,22 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
- *
+ * struct File_content - a struct containing item of a line
+ * @file: pointer to the file
+ * @line: a pointer to the line read by getline
+ * @line_number: the line number been read
+ * @num_tokens: number of tokens passed
+ * @tokens: contains the tokenized string
+ * @opcode_instruction: array holding a instruction_t struct
+ * @head: pointer to the head
  */
 
-typedef struct
+typedef struct File_content
 {
 	FILE *file;
 	char *line;
@@ -63,13 +70,13 @@ void count_arguments(int argc);
 int main(int argc, char **argv);
 void handle_file_opening(const char *name_of_file, FILE **file);
 File_content *allocated_file_content(void);
-void parse_line();
+void parse_line(void);
 void get_opcode_func(void);
 void invalid_instruction(void);
 void fclose_file(void);
 void free_tokens(void);
 void free_file_ptr(void);
-void execute_opcode();
+void execute_opcode(void);
 void push(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
 int is_digit_(char *str);

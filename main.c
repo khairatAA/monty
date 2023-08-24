@@ -1,9 +1,10 @@
 #include "monty.h"
 
- File_content *file_ptr = NULL;
+File_content *file_ptr = NULL;
 
 /**
- *
+ * count_arguments - counts the number of CLI arguments passed
+ * @argc: check if the arguments is == 2
  */
 
 void count_arguments(int argc)
@@ -16,7 +17,9 @@ void count_arguments(int argc)
 }
 
 /**
- *
+ * handle_file_opening - checks if the file can open and reads it
+ * @name_of_file: name of file to be opened
+ * @file: a FILE pointer
  */
 
 void handle_file_opening(const char *name_of_file, FILE **file)
@@ -30,7 +33,8 @@ void handle_file_opening(const char *name_of_file, FILE **file)
 }
 
 /**
- *
+ * allocated_file_content - it allocates memory to the file_contect struct
+ * Return: a pointer to the address of the memory created
  */
 
 File_content *allocated_file_content(void)
@@ -62,7 +66,10 @@ File_content *allocated_file_content(void)
 }
 
 /**
- *
+ * main - entry point of the monty interpreter
+ * @argc: the argument count
+ * @argv: argument vector
+ * Return: 0 on sucess
  */
 
 int main(int argc, char **argv)
