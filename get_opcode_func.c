@@ -21,6 +21,7 @@ void get_opcode_func(void)
 		{"swap", swap},
 		{"nop", nop},
 		{"mod", mod},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 
