@@ -12,19 +12,20 @@ void get_opcode_func(void)
 
 	static instruction_t opcodes[] = {
 		{"push", push}, {"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"add", add},
-		{"sub", sub},
-		{"div", _div},
-		{"mul", mul},
-		{"swap", swap},
-		{"nop", nop},
+		{"pint", pint}, {"pop", pop},
+		{"add", add}, {"sub", sub},
+		{"div", _div}, {"mul", mul},
+		{"swap", swap}, {"nop", nop},
 		{NULL, NULL}
 	};
 
 	if (file_ptr->num_tokens == 0)
 		return;
+	if (file_ptr->tokens[0][0] == '#')
+	{
+		handle_hash();
+		return;
+	}
 	for (i = 0; opcodes[i].opcode != NULL; i++)
 	{
 		if (strcmp(opcodes[i].opcode, file_ptr->tokens[0]) == 0)
