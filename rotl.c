@@ -13,14 +13,14 @@ void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp, *current;
 	(void) *stack;
+	(void) line_number;
 
 	temp = current = file_ptr->head;
 	/* might remove NULL conditon since rotl should never fail */
 	if (temp == NULL)
 	{
-		fprintf(stderr, "L%d: can't rotl an empty stack\n", line_number);
 		free_file_ptr();
-		exit(EXIT_FAILURE);
+		return;
 	}
 
 	while (temp->next != NULL)
