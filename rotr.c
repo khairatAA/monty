@@ -18,8 +18,9 @@ void rotr(stack_t **stack, unsigned int line_number)
 	temp = file_ptr->head;
 	if (temp == NULL)
 	{
+		fprintf(stderr, "L%d: can't rotl, stack too short\n", line_number);
 		free_file_ptr();
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	while (temp->next != NULL)

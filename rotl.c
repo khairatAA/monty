@@ -17,10 +17,11 @@ void rotl(stack_t **stack, unsigned int line_number)
 
 	temp = current = file_ptr->head;
 	/* might remove NULL conditon since rotl should never fail */
-	if (temp == NULL)
+	if (temp == NULL || count_stacks(file_ptr->head) < 2)
 	{
+		fprintf(stderr, "L%d: can't rotl, stack too short\n", line_number);
 		free_file_ptr();
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	while (temp->next != NULL)
