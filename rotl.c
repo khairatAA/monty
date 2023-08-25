@@ -19,7 +19,6 @@ void rotl(stack_t **stack, unsigned int line_number)
 	/* might remove NULL conditon since rotl should never fail */
 	if (temp == NULL)
 	{
-		free_file_ptr();
 		return;
 	}
 

@@ -11,8 +11,10 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	if (file_ptr->num_tokens < 2 || !(is_digit_(file_ptr->tokens[1])))
 	{
-		free_file_ptr();
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		fclose_file();
+		free_tokens();
+		free_file_ptr();
 		exit(EXIT_FAILURE);
 	}
 	/*printf("DEBUG: Token[1]: %s\n", file_ptr->tokens[1]);*/
@@ -20,11 +22,14 @@ void push(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		fclose_file();
+		free_tokens();
+		free_file_ptr();
 		exit(EXIT_FAILURE);
 	}
 
 	(*stack)->n = (int) atoi(file_ptr->tokens[1]);
-	(*stack)->prev = (*stack)->next = NULL;
+	(*stack)->next = (*stack)->prev = NULL;
 	if (file_ptr->head != NULL)
 	{
 		(*stack)->next = file_ptr->head;

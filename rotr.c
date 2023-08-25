@@ -18,7 +18,6 @@ void rotr(stack_t **stack, unsigned int line_number)
 	temp = file_ptr->head;
 	if (temp == NULL)
 	{
-		free_file_ptr();
 		return;
 	}
 

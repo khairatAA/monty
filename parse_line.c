@@ -28,7 +28,7 @@ void parse_line(void)
 	if (file_ptr->tokens == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free(line_copy);
+		free_file_ptr();
 		exit(EXIT_FAILURE);
 	}
 	strcpy(line_copy, file_ptr->line);
@@ -40,8 +40,7 @@ void parse_line(void)
 		if (file_ptr->tokens[i] == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
-			free_tokens();
-			free(line_copy);
+			free_file_ptr();
 			exit(EXIT_FAILURE);
 		}
 		strcpy(file_ptr->tokens[i], token);
