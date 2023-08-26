@@ -16,7 +16,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 	temp = file_ptr->head;
 	if (temp == NULL)
 	{
-		printf("\n");
+		return;
 	}
 	else
 	{
