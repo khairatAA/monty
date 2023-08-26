@@ -10,10 +10,12 @@
 void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
+	int count;
 	(void) *stack;
 	(void) line_number;
 
 	temp = file_ptr->head;
+	count = 0;
 	if (temp == NULL)
 	{
 		printf("\n");
@@ -22,14 +24,23 @@ void pstr(stack_t **stack, unsigned int line_number)
 	{
 		while (temp != NULL)
 		{
-			if ((temp->n >= 65 && temp->n <= 90)
-					|| (temp->n >= 97 && temp->n <= 122))
-				printf("%c", temp->n);
-			if (temp->n == 0)
+			if (!(temp->n >= 65 && temp->n <= 90)
+					&& !(temp->n >= 97 && temp->n <= 122))
+			{
+				if (count == 0)
+					break;
+				printf("\n");
 				break;
-			temp = temp->next;
-		}
+			}
+			else
+			{
+				printf("%c", temp->n);
 
-		printf("\n");
+				if (temp->next == NULL)
+					printf("\n");
+			}
+			temp = temp->next;
+			count++;
+		}
 	}
 }
