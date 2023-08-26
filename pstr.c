@@ -16,21 +16,18 @@ void pstr(stack_t **stack, unsigned int line_number)
 	temp = file_ptr->head;
 	if (temp == NULL)
 	{
-		return;
+		printf("\n");
 	}
 	else
 	{
-
-		printf("%c", temp->n);
-		while (temp->next != NULL)
+		while (temp != NULL)
 		{
-			temp = temp->next;
-			if (!(temp->n >= 'A' && temp->n <= 'Z')
-					&& !(temp->n >= 'a' && temp->n <= 'z'))
-				break;
+			if ((temp->n >= 65 && temp->n <= 90)
+					|| (temp->n >= 97 && temp->n <= 122))
+				printf("%c", temp->n);
 			if (temp->n == 0)
 				break;
-			printf("%c", temp->n);
+			temp = temp->next;
 		}
 
 		printf("\n");
