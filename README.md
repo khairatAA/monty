@@ -1,6 +1,6 @@
-# Project: 0x19. C - Stacks, Queues - LIFO, FIFO
+# C - Stacks, Queues - LIFO, FIFO
 
-The Monty Bytecode Interpreter is a program that reads and executes Monty bytecode files. Monty is a simple programming language that uses a stack data structure.
+The Monty Bytecode Interpreter is a program written in C programming language that reads and executes Monty bytecode files. Monty is a simple programming language that uses a stack data structure.
 
 ## Table of Contents
 
@@ -44,7 +44,7 @@ Run the Monty interpreter with the following command:
 ./monty bytecode_file
 ```
 
-Replace bytecode_file with the path to your Monty bytecode file.
+Replace `bytecode_file` with the path to your Monty bytecode file.
 
 ## Supported Opcodes
 
