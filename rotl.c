@@ -22,6 +22,7 @@ void rotl(stack_t **stack, unsigned int line_number)
 
 	temp = file_ptr->head;
 	current = temp->next;
+	file_ptr->head = current;
 	while (current != NULL)
 	{
 		if (current->next == NULL)
