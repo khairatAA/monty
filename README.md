@@ -90,3 +90,4 @@ This project was done  by:
 
 - _Khairat Adesina_ <khairatadesina01@gmail.com>
 - _Joshua Oseghale_ <aigbokhaebholojoshua@gmail.com>
+**Github:** [JentleJoe](https://github.com/JentleJoe)
