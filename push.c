@@ -9,22 +9,27 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	if (file_ptr->num_tokens < 2 || !(is_digit_(file_ptr->tokens[1])))
+	if (file_ptr->num_tokens <= 1 || !(is_digit_(file_ptr->tokens[1])))
 	{
-		free_file_ptr();
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		fclose_file();
+		free_tokens();
+		free_file_ptr();
 		exit(EXIT_FAILURE);
 	}
-	/*printf("DEBUG: Token[1]: %s\n", file_ptr->tokens[1]);*/
+	/*printf("in push DEBUG: Token[1]: %s\n", file_ptr->tokens[1]);*/
 	*stack = malloc(sizeof(stack_t));
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		fclose_file();
+		free_tokens();
+		free_file_ptr();
 		exit(EXIT_FAILURE);
 	}
 
+	(*stack)->next = (*stack)->prev = NULL;
 	(*stack)->n = (int) atoi(file_ptr->tokens[1]);
-	(*stack)->prev = (*stack)->next = NULL;
 	if (file_ptr->head != NULL)
 	{
 		(*stack)->next = file_ptr->head;
@@ -45,7 +50,7 @@ int is_digit_(char *str)
 
 	while (str[i] != '\0')
 	{
-		if (str[i] == '-' || str[i] == '+')
+		if (i == 0 && str[i] == '-' && str[i + 1])
 		{
 			i++;
 			continue;

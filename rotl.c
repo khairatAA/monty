@@ -15,24 +15,22 @@ void rotl(stack_t **stack, unsigned int line_number)
 	(void) *stack;
 	(void) line_number;
 
-	temp = current = file_ptr->head;
-	/* might remove NULL conditon since rotl should never fail */
-	if (temp == NULL || count_stacks(file_ptr->head) < 2)
+	if (count_stacks(file_ptr->head) < 2)
 	{
-		fprintf(stderr, "L%d: can't rotl, stack too short\n", line_number);
-		free_file_ptr();
-		exit(EXIT_FAILURE);
+		return;
 	}
 
-	while (temp->next != NULL)
+	temp = file_ptr->head;
+	current = temp->next;
+	while (current != NULL)
 	{
-		temp = temp->next;
+		if (current->next == NULL)
+		{
+			current->next = temp;
+			temp->next = NULL;
+			temp->prev = current;
+			break;
+		}
+		current = current->next;
 	}
-
-	current = current->next;
-	temp->next = file_ptr->head;
-	file_ptr->head->next = NULL;
-	file_ptr->head->prev = temp;
-	file_ptr->head = current;
-
 }
