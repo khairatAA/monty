@@ -50,6 +50,7 @@ File_content *allocated_file_content(void)
 	file_ptr->line_number = 0;
 	file_ptr->num_tokens = 0;
 	file_ptr->tokens = NULL;
+	file_ptr->mode = "stack";
 	file_ptr->head = NULL;
 	file_ptr->opcode_instruction = (instruction_t *)
 		malloc(sizeof(instruction_t));
@@ -90,6 +91,11 @@ int main(int argc, char **argv)
 	{
 		file_ptr->line_number = file_ptr->line_number + 1;
 		parse_line();
+		if (switch_mode())
+		{
+			free_tokens();
+			continue;
+		}
 		get_opcode_func();
 		execute_opcode();
 		free_tokens();

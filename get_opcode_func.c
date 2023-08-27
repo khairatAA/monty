@@ -12,20 +12,13 @@ void get_opcode_func(void)
 
 	static instruction_t opcodes[] = {
 		{"push", push}, {"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"add", add},
-		{"sub", sub},
-		{"div", _div},
-		{"mul", mul},
-		{"swap", swap},
-		{"nop", nop},
-		{"mod", mod},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl},
-		{"rotr", rotr},
-		{NULL, NULL}
+		{"pint", pint}, {"pop", pop},
+		{"add", add}, {"sub", sub},
+		{"div", _div}, {"mul", mul},
+		{"swap", swap}, {"nop", nop},
+		{"mod", mod}, {"pchar", pchar},
+		{"pstr", pstr}, {"rotl", rotl},
+		{"rotr", rotr}, {NULL, NULL}
 	};
 
 	if (file_ptr->num_tokens == 0)

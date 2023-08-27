@@ -50,3 +50,29 @@ void parse_line(void)
 	file_ptr->tokens[i] = NULL;
 	free(line_copy);
 }
+
+
+/**
+ * switch_mode - switches data structure operation from stack to queue
+ * and vice versa
+ *
+ * Return: mode passed ("stack" or "queue"), NULL if no node was passed
+ */
+char *switch_mode(void)
+{
+	if (file_ptr->num_tokens == 0)
+		return (NULL);
+	if (file_ptr->tokens[0][0] == '#')
+	{
+		handle_hash();
+		return (NULL);
+	}
+	if (strcmp(file_ptr->tokens[0], "stack") == 0 ||
+			strcmp(file_ptr->tokens[0], "queue") == 0)
+	{
+		file_ptr->mode = file_ptr->tokens[0];
+		return (file_ptr->tokens[0]);
+	}
+
+	return (NULL);
+}

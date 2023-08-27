@@ -58,6 +58,7 @@ typedef struct File_content
 	unsigned int line_number;
 	int num_tokens;
 	char **tokens;
+	char *mode;
 	instruction_t *opcode_instruction;
 	stack_t *head;
 } File_content;
@@ -101,5 +102,6 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+char *switch_mode(void);
 
 #endif /* MONTY_H */
