@@ -103,5 +103,6 @@ void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 char *switch_mode(void);
+void switch_stack(void);
 
 #endif /* MONTY_H */

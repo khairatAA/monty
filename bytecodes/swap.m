@@ -1,2 +1,7 @@
 push 98
-swap
+push 45
+queue
+push 33
+stack
+push 44
+pall

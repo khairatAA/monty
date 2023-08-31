@@ -51,7 +51,6 @@ void parse_line(void)
 	free(line_copy);
 }
 
-
 /**
  * switch_mode - switches data structure operation from stack to queue
  * and vice versa

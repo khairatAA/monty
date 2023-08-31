@@ -91,6 +91,10 @@ int main(int argc, char **argv)
 	{
 		file_ptr->line_number = file_ptr->line_number + 1;
 		parse_line();
+		/**
+		 * checks if command pass is 'stack' or 'queue' and
+		 * updates file_ptr->mode and moves execution to next line
+		 */
 		if (switch_mode())
 		{
 			free_tokens();
